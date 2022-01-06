@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Vinos</h1>
+<h1>Listado de Vinos</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Nombre</th>
+      <th>Cepas</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,14 @@
     <% @vinos.each do |vino| %>
       <tr>
         <td><%= vino.name %></td>
+        <td>
+            <ul>
+
+            <%= vino.cepa_vinos.each do |cepa_vino| %>
+                <li><%= cepa_vino.cepa.name %></li>
+            <% end %>
+            </ul>
+        </td>
         <td><%= link_to 'Show', vino %></td>
         <td><%= link_to 'Edit', edit_vino_path(vino) %></td>
         <td><%= link_to 'Destroy', vino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
