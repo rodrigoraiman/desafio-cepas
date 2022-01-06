@@ -4,6 +4,14 @@
   <strong>Name:</strong>
   <%= @cepa.name %>
 </p>
+<p>
+  <h1>Cepas<h1>
+  <ul>
+    <% @cepa.vinos.each do |vino| %>
+      <li><%= vino.name %></li>
+    <% end %>
+  <ul>
+<p>
 
 <%= link_to 'Edit', edit_cepa_path(@cepa) %> |
 <%= link_to 'Back', cepas_path %>

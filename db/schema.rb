@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_014243) do
+ActiveRecord::Schema.define(version: 2022_01_06_174648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_014243) do
     t.bigint "vino_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "percentage"
     t.index ["cepa_id"], name: "index_cepa_vinos_on_cepa_id"
     t.index ["vino_id"], name: "index_cepa_vinos_on_vino_id"
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_014243) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "aviable"
   end
 
   create_table "vinos", force: :cascade do |t|
