@@ -15,7 +15,18 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-  
+  <table>
+    <div class="field">
+      <%= form.label :cepas %>
+      <%= form.collection_check_boxes(:cepa_ids, Cepa.all, :id, :name) do |b| %>
+        <%= b.label class: 'label-checkbox' do %>
+        <%= b.check_box + b.text %>
+        <br>
+        <%= form.text_field '', name:'vino[percentages][]' %>
+        <% end %>
+      <% end %>
+    </div>
+  </table>
 
   <div class="actions">
     <%= form.submit %>

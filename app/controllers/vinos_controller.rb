@@ -21,10 +21,13 @@ class VinosController < ApplicationController
 
   # POST /vinos or /vinos.json
   def create
-    @vino = Vino.new(vino_params)
+    @vino = Vino.new(name: vino_params[:name])
 
     respond_to do |format|
       if @vino.save
+        vino_params[:cepa_ids].reject(&:empty?).each_with_index do |id, index|
+          CepaVino.create!(vino_id: @vino.id, cepa_id: id, percentage: vino_params[:percentages][index])
+        end
         format.html { redirect_to vino_url(@vino), notice: "Vino was successfully created." }
         format.json { render :show, status: :created, location: @vino }
       else
@@ -65,6 +68,6 @@ class VinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vino_params
-      params.require(:vino).permit(:name)
+      params.require(:vino).permit(:name, cepa_ids: [], percentages: [])
     end
 end
