@@ -1,4 +1,5 @@
 class CepasController < ApplicationController
+  before_action :authorize_editor!
   before_action :set_cepa, only: %i[ show edit update destroy ]
 
   # GET /cepas or /cepas.json

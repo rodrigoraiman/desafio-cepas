@@ -8,6 +8,7 @@
       <th>Nombre</th>
       <th>Cepas</th>
       <th>aviable</th>
+      <th>cepa</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
             <%= vino.cepa_vinos.each do |cepa_vino| %>
                 <li><%= cepa_vino.cepa.name %></li>
                 <li><%= cepa_vino.cepa.aviable %></li>
+                <li><%= vino.cepas.map(&:name).join('.') %></li>
             <% end %>
             </ul>
         </td>
